@@ -311,14 +311,20 @@ footer {
   }
   --- ここからdrawingページのCSS --- 
  /* --- ギャラリー（作品一覧）のレイアウト --- */
-.gallery-grid {
-    display: flex;
-    flex-wrap: wrap; /* 横幅がいっぱいになったら自動で改行 */
-    gap: 40px 3%; /* 上下余白:40px, 左右余白:3% */
+.page-description {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
     margin: 40px 0 60px;
   }
 
-  /* 1行に3つ綺麗に収める計算（幅31.3%） */
+  .gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 3%;
+    margin: 40px 0 60px;
+  }
+
   .gallery-item {
     width: 31.3%;
     display: flex;
@@ -327,26 +333,23 @@ footer {
     box-sizing: border-box;
   }
 
-  /* 画像表示エリアの大きさ制限 */
   .gallery-image {
     width: 100%;
-    height: 200px; /* 画像枠の高さを200pxに固定 */
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
   }
 
-  /* 画像本体の設定（でかくなりすぎるのを防ぐ） */
   .gallery-image img {
     max-width: 100%;
     max-height: 100%;
     width: auto;
     height: auto;
-    object-fit: contain; /* 縦横比を崩さず枠内にピッタリ収める */
+    object-fit: contain;
   }
 
-  /* キャプション（タイトル・文字） */
   .gallery-caption {
     text-align: center;
     font-size: 0.85rem;
@@ -362,10 +365,9 @@ footer {
     color: #777;
   }
 
-  /* スマホ表示時（768px以下）は1列にする */
   @media (max-width: 768px) {
     .gallery-item {
-      width: 100%; /* スマホは幅100%で1列表示 */
+      width: 100%;
     }
   }
 }
