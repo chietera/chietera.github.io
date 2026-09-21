@@ -310,44 +310,39 @@ footer {
     gap: 30px;
   }
   --- ここからdrawingページのCSS --- 
- /* --- ギャラリー（作品一覧）のレイアウト --- */
-.page-description {
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-    margin: 40px 0 60px;
-  }
-
-  .gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px 3%;
-    margin: 40px 0 60px;
+ /* -------------------------------------- */
+/* ギャラリー用のCSS（必ず一番最後に置く） */
+/* -------------------------------------- */
+.gallery-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 40px 3% !important;
+    margin-bottom: 60px !important;
   }
 
   .gallery-item {
-    width: 31.3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
+    width: 31.3% !important; /* パソコンでは横に3つ並べる */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
   }
 
   .gallery-image {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+    width: 100% !important;
+    height: 220px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 12px !important;
   }
 
   .gallery-image img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
   }
 
   .gallery-caption {
@@ -356,18 +351,10 @@ footer {
     color: #333;
   }
 
-  .item-title {
-    margin-bottom: 2px;
-  }
-
-  .item-detail {
-    font-size: 0.75rem;
-    color: #777;
-  }
-
+  /* スマホの時だけ1列にする指定は最後に書く */
   @media (max-width: 768px) {
     .gallery-item {
-      width: 100%;
+      width: 100% !important;
     }
   }
 }
