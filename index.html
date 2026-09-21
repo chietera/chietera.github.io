@@ -3,34 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>私のポートフォリオ</title>
-    <!-- CSS -->
+    <title>CHIE TERAKI</title>
+    <!-- CSSファイルの読み込み -->
     <link rel="stylesheet" href="style.css" />
     <!-- ファビコン -->
     <link rel="icon" href="IMG_0166.png" />
   </head>
   <body>
-    <h1>Portfolio</h1>
+    <!-- ヘッダー＆ナビゲーション -->
+    <header>
+      <h1 class="site-title">CHIE TERAKI</h1>
 
-    <div class="section">
-      <h2>自己紹介</h2>
-      <p>ここに自己紹介文を書きますΘ</p>
-    </div>
+      <!-- ハンバーガーボタン（スマホ用） -->
+      <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <div class="section">
-      <h2>制作物 / スキル</h2>
-      <ul>
-        <li>作品や取り組んでいること1</li>
-        <li>作品や取り組んでいること2</li>
-      </ul>
-    </div>
+      <!-- ナビゲーションメニュー -->
+      <nav class="nav-menu" id="js-nav">
+        <a href="#about" class="active">ABOUT</a>
+        <span class="divider">|</span>
+        <a href="#drawing">DRAWING & ILLUST</a>
+        <span class="divider">|</span>
+        <a href="#design">DESIGN</a>
+        <span class="divider">|</span>
+        <a href="#3d">3D</a>
+      </nav>
+    </header>
 
-    <div class="section">
-      <h2>連絡先</h2>
-      <p>X (Twitter) / メールアドレスなど</p>
-    </div>
+    <!-- メインコンテンツ -->
+    <main class="container">
+      <!-- プロフィール上部 -->
+      <section class="profile-top">
+        <div class="profile-info">
+          <h2>寺木 千絵（てらき ちえ）</h2>
+          <p class="sub-text">埼玉県在住</p>
+
+          <ul class="history-list">
+            <li><span>1995年</span> 東京生まれ</li>
+            <li>
+              <span>2016年</span> 武蔵野美術大学 テキスタイル専攻卒業<br /><small
+                >卒業制作では同専攻(約50名)の中から優秀賞を受賞</small
+              >
+            </li>
+            <li><span>2016年</span> パチンコ関係のライター</li>
+            <li><span>2025年〜</span> 全国各地の旅先で停泊</li>
+            <li><span>2025年</span> 求職中</li>
+          </ul>
+
+          <div class="contact">
+            <p>連絡先</p>
+            <a href="mailto:chiennu0705@gmail.com">chiennu0705@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="profile-image">
+          <img src="IMG_0166.png" alt="寺木千絵" />
+        </div>
+      </section>
+
+      <hr class="line" />
+
+      <!-- プロフィール下部 -->
+      <section class="profile-bottom">
+        <div class="col-left">
+          <h3>自己紹介</h3>
+          <p>好奇心旺盛で常に新しいものを求めている。</p>
+          <p>特技は早寝早起き。</p>
+          <p>ゲテモノ料理（特に昆虫食）が好きです。</p>
+          <p>歩くことも大好きなで、疲れていてもついつい歩いてしまう。</p>
+          <p>
+            前向きで新しいことに挑戦していくことをモットーに、日々を生きています。
+          </p>
+        </div>
+
+        <div class="col-right">
+          <h3>個展</h3>
+          <div class="exhibition-item">
+            <strong>2016</strong>
+            <p>ZEN展 (優秀賞受賞)<br />東京都美術館</p>
+          </div>
+          <div class="exhibition-item">
+            <strong>2017</strong>
+            <p>ZEN展<br />埼玉県立美術館</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="line" />
+
+      <!-- フッター -->
+      <footer>
+        <p>&copy; 2026 CHIE TERAKI</p>
+      </footer>
+    </main>
+
+    <!-- トップへ戻るボタン -->
+    <a href="#" class="scroll-top-btn" aria-label="ページ上部へ戻る">↑</a>
+
+    <!-- JavaScriptファイルの読み込み（</body>の直前） -->
+    <script src="script.js"></script>
   </body>
-  <footer>
-    <p>&copy; 2026 CHIE TERAKI</p>
-  </footer>
 </html>
