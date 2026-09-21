@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+  font-family: "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
   color: #333;
   background-color: #fff;
   line-height: 1.8;
@@ -19,16 +19,17 @@ body {
 /* ヘッダー & ナビゲーション */
 header {
   text-align: center;
-  padding: 40px 0 20px;
+  padding: 20px 0;
 }
 
 .site-title {
   font-size: 2.5rem;
   letter-spacing: 0.2em;
   font-family: sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
+/* パソコン用ナビゲーション */
 .nav-menu {
   display: flex;
   justify-content: center;
@@ -55,8 +56,8 @@ header {
 /* 全体コンテナ */
 .container {
   max-width: 850px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 30px auto;
+  padding: 0 15px;
 }
 
 /* プロフィール上部 */
@@ -92,16 +93,28 @@ header {
 
 .history-list li {
   margin-bottom: 8px;
+  display: flex; /* Flexboxで年数と文章を並べる */
+  align-items: baseline;
 }
 
-.history-list span {
+.history-list li span {
   display: inline-block;
-  width: 70px;
+  width: 140px; /* 幅を 70px から 140px に拡大 */
+  flex-shrink: 0; /* 年数部分が潰れるのを防ぐ */
   color: #555;
 }
 
 .contact {
   margin-top: 20px;
+  display: flex; /* 横並びにして位置を固定 */
+  align-items: baseline;
+}
+
+.contact span {
+  display: inline-block;
+  width: 140px; /* 経歴の年数幅(140px)と揃える */
+  flex-shrink: 0;
+  color: #555;
 }
 
 .contact a {
@@ -111,8 +124,9 @@ header {
 
 /* 丸型画像 */
 .profile-image {
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
 }
 
 .profile-image img {
@@ -164,10 +178,10 @@ footer {
 /* スクロールトップボタン */
 .scroll-top-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 45px;
-  height: 45px;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
   background-color: #333;
   color: #fff;
   border-radius: 50%;
@@ -175,12 +189,12 @@ footer {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition:
     background-color 0.3s,
     transform 0.2s;
-  z-index: 1000;
+  z-index: 99;
 }
 
 .scroll-top-btn:hover {
@@ -188,7 +202,7 @@ footer {
   transform: translateY(-3px);
 }
 
-/* ハンバーガーメニュー (スマホ用) */
+/* ハンバーガーボタン（デフォルトは非表示） */
 .hamburger {
   display: none;
   background: none;
@@ -231,18 +245,28 @@ footer {
   transform: translateY(-11px) rotate(-45deg);
 }
 
+/* ==========================================
+   スマホ対応レスポンシブ設定 (画面幅 768px 以下)
+   ========================================== */
 @media (max-width: 768px) {
+  /* タイトルサイズ微調整 */
+  .site-title {
+    font-size: 1.8rem;
+  }
+
+  /* ハンバーガーボタンを表示 */
   .hamburger {
     display: block;
   }
 
+  /* メニューを全画面表示へ変更 */
   .nav-menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.98);
     flex-direction: column;
     justify-content: center;
     gap: 30px;
@@ -258,6 +282,90 @@ footer {
   }
 
   .divider {
-    display: none;
+    display: none; /* スマホ時は区切り線「|」を消す */
+  }
+
+  /* プロフィール上部（横並びから縦並びに） */
+  .profile-top {
+    flex-direction: column-reverse; /* 画像を上にしたい場合は column-reverse、下にしたい場合は column */
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-image {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .history-list li span {
+    display: block;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  /* プロフィール下部（横並びから縦並びに） */
+  .profile-bottom {
+    flex-direction: column;
+    gap: 30px;
+  }
+  --- ここからdrawingページのCSS --- 
+ /* --- ギャラリー（作品一覧）のレイアウト --- */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap; /* 横幅がいっぱいになったら自動で改行 */
+    gap: 40px 3%; /* 上下余白:40px, 左右余白:3% */
+    margin: 40px 0 60px;
+  }
+
+  /* 1行に3つ綺麗に収める計算（幅31.3%） */
+  .gallery-item {
+    width: 31.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  /* 画像表示エリアの大きさ制限 */
+  .gallery-image {
+    width: 100%;
+    height: 200px; /* 画像枠の高さを200pxに固定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  /* 画像本体の設定（でかくなりすぎるのを防ぐ） */
+  .gallery-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* 縦横比を崩さず枠内にピッタリ収める */
+  }
+
+  /* キャプション（タイトル・文字） */
+  .gallery-caption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #333;
+  }
+
+  .item-title {
+    margin-bottom: 2px;
+  }
+
+  .item-detail {
+    font-size: 0.75rem;
+    color: #777;
+  }
+
+  /* スマホ表示時（768px以下）は1列にする */
+  @media (max-width: 768px) {
+    .gallery-item {
+      width: 100%; /* スマホは幅100%で1列表示 */
+    }
   }
 }
