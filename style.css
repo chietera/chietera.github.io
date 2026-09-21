@@ -6,22 +6,23 @@
 }
 
 body {
-  font-family: "Helvetica Neue", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, sans-serif;
+  font-family:
+    "Helvetica Neue", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    メイリオ, sans-serif;
   line-height: 1.8;
-  color: #333333;               /* 真っ黒ではなく少し柔らかいダークグレー */
-  background-color: #f8f9fa;    /* 落ち着いたうすいグレーの背景 */
-  max-width: 800px;
+  color: #333333;
+  background-color: #f8f9fa;
   margin: 50px auto;
   padding: 20px;
 }
 
 /* 2. メインコンテンツを中央に寄せてカード風にする */
 .container {
-  max-width: 800px;             /* 見やすい横幅に制限 */
-  margin: 40px auto;            /* 中央寄せ */
-  background: #ffffff;          /* 白い背景 */
+  max-width: 800px; /* 見やすい横幅に制限 */
+  margin: 40px auto; /* 中央寄せ */
+  background: #ffffff; /* 白い背景 */
   padding: 40px;
-  border-radius: 12px;          /* 角を丸く */
+  border-radius: 12px; /* 角を丸く */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* ふんわりとした影 */
 }
 
@@ -55,5 +56,5 @@ a {
 
 a:hover {
   color: #2b6cb0;
-  text-decoration: underline;   /* ホバー時に下線 */
+  text-decoration: underline; /* ホバー時に下線 */
 }
