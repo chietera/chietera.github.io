@@ -1,118 +1,136 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@charset "UTF-8";
 
+/* ==========================================
+   全体・共通設定
+   ========================================== */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* ← これを追加するとスクロールが滑らかになります */
 }
-
 body {
   font-family: "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
   color: #333;
   background-color: #fff;
   line-height: 1.8;
   padding: 20px;
+  margin: 0;
 }
 
-/* ヘッダー & ナビゲーション */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 区切り線 */
+.line {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 40px 0;
+}
+
+/* ==========================================
+   ヘッダー・ナビゲーション
+   ========================================== */
 header {
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 0 20px;
 }
 
 .site-title {
-  font-size: 2.5rem;
-  letter-spacing: 0.2em;
-  font-family: sans-serif;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
-/* パソコン用ナビゲーション */
 .nav-menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  font-family: sans-serif;
-  font-weight: bold;
-  letter-spacing: 0.1em;
+  gap: 15px;
+  font-size: 0.9rem;
 }
 
 .nav-menu a {
+  color: #666;
   text-decoration: none;
-  color: #888;
+  letter-spacing: 1px;
 }
 
-.nav-menu a.active {
-  color: #a3b8da;
+.nav-menu a.active,
+.nav-menu a:hover {
+  color: #000;
+  font-weight: 700;
 }
 
 .divider {
   color: #ccc;
 }
 
-/* 全体コンテナ */
-.container {
-  max-width: 850px;
-  margin: 30px auto;
-  padding: 0 15px;
+/* スマホ用ハンバーガーボタン */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* プロフィール上部 */
+/* ==========================================
+   ABOUT ページ (index.html)
+   ========================================== */
 .profile-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 40px;
-  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .profile-info {
   flex: 1;
-  font-size: 0.9rem;
 }
 
 .profile-info h2 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 5px;
-  font-weight: normal;
 }
 
 .sub-text {
-  color: #666;
-  font-size: 0.8rem;
-  margin-bottom: 20px;
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
 }
 
+/* 経歴リスト */
 .history-list {
   list-style: none;
-  margin-bottom: 20px;
+  padding: 0;
+  margin-bottom: 25px;
 }
 
 .history-list li {
-  margin-bottom: 8px;
-  display: flex; /* Flexboxで年数と文章を並べる */
+  margin-bottom: 10px;
+  display: flex;
   align-items: baseline;
 }
 
 .history-list li span {
   display: inline-block;
-  width: 140px; /* 幅を 70px から 140px に拡大 */
-  flex-shrink: 0; /* 年数部分が潰れるのを防ぐ */
+  width: 140px;
+  flex-shrink: 0;
   color: #555;
 }
 
+/* 連絡先 */
 .contact {
-  margin-top: 20px;
-  display: flex; /* 横並びにして位置を固定 */
+  margin-top: 25px;
+  display: flex;
   align-items: baseline;
 }
 
 .contact span {
   display: inline-block;
-  width: 140px; /* 経歴の年数幅(140px)と揃える */
+  width: 140px;
   flex-shrink: 0;
   color: #555;
 }
@@ -122,33 +140,23 @@ header {
   text-decoration: underline;
 }
 
-/* 丸型画像 */
+/* プロフィール画像 */
 .profile-image {
-  width: 200px;
-  height: 200px;
+  width: 220px;
   flex-shrink: 0;
 }
 
 .profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%; /* 角丸を100%（円）にする */
+  object-fit: cover; /* 画像が歪まないように切り抜く */
 }
 
-/* 区切り線 */
-.line {
-  border: none;
-  border-top: 1px solid #333;
-  margin: 30px 0;
-}
-
-/* プロフィール下部 */
+/* プロフィール下部（自己紹介・個展） */
 .profile-bottom {
   display: flex;
-  justify-content: space-between;
   gap: 40px;
-  font-size: 0.85rem;
 }
 
 .col-left,
@@ -156,193 +164,59 @@ header {
   flex: 1;
 }
 
-.profile-bottom h3 {
-  font-size: 1rem;
+.col-left h3,
+.col-right h3 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
   margin-bottom: 15px;
-  font-weight: bold;
 }
 
 .exhibition-item {
   margin-bottom: 15px;
 }
 
-/* フッター */
-footer {
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 20px 0;
-  font-family: sans-serif;
-}
-
-/* スクロールトップボタン */
-.scroll-top-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition:
-    background-color 0.3s,
-    transform 0.2s;
-  z-index: 99;
-}
-
-.scroll-top-btn:hover {
-  background-color: #a3b8da;
-  transform: translateY(-3px);
-}
-
-/* ハンバーガーボタン（デフォルトは非表示） */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 30px;
-  height: 24px;
-  position: relative;
-  z-index: 1001;
-  margin: 0 auto 20px;
-}
-
-.hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #333;
-  position: absolute;
-  left: 0;
-  transition: all 0.3s;
-}
-
-.hamburger span:nth-child(1) {
-  top: 0;
-}
-.hamburger span:nth-child(2) {
-  top: 11px;
-}
-.hamburger span:nth-child(3) {
-  bottom: 0;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
-}
-
 /* ==========================================
-   スマホ対応レスポンシブ設定 (画面幅 768px 以下)
+   DRAWING & ILLUST ページ (drawing.html)
    ========================================== */
-@media (max-width: 768px) {
-  /* タイトルサイズ微調整 */
-  .site-title {
-    font-size: 1.8rem;
-  }
-
-  /* ハンバーガーボタンを表示 */
-  .hamburger {
-    display: block;
-  }
-
-  /* メニューを全画面表示へ変更 */
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-    z-index: 1000;
-  }
-
-  .nav-menu.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .divider {
-    display: none; /* スマホ時は区切り線「|」を消す */
-  }
-
-  /* プロフィール上部（横並びから縦並びに） */
-  .profile-top {
-    flex-direction: column-reverse; /* 画像を上にしたい場合は column-reverse、下にしたい場合は column */
-    text-align: center;
-    gap: 20px;
-  }
-
-  .profile-image {
-    width: 160px;
-    height: 160px;
-    margin: 0 auto;
-  }
-
-  .history-list li span {
-    display: block;
-    width: 100%;
-    margin-bottom: 2px;
-  }
-
-  /* プロフィール下部（横並びから縦並びに） */
-  .profile-bottom {
-    flex-direction: column;
-    gap: 30px;
-  }
+.page-description {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin: 30px 0 50px;
 }
-/* --------------------------------------
-   ギャラリー用のCSS（必ず一番最後の外側に置く）
-   -------------------------------------- */
+
+/* 3列グリッド並び */
 .gallery-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 40px 3% !important;
-  margin-bottom: 60px !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 3%;
+  margin-bottom: 60px;
 }
 
 .gallery-item {
-  width: 31.3% !important; /* PCでは横に3つ並べる */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  box-sizing: border-box !important;
+  width: 31.3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .gallery-image {
-  width: 100% !important;
-  height: 220px !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-bottom: 12px !important;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .gallery-image img {
-  max-width: 100% !important;
-  max-height: 100% !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .gallery-caption {
@@ -351,9 +225,181 @@ footer {
   color: #333;
 }
 
-/* ★ スマホ（768px以下）の時だけ1列にする設定は必ず最後にする */
+.item-title {
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.item-detail {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* フッター＆トップ戻るボタン */
+footer {
+  text-align: center;
+  color: #888;
+  font-size: 0.8rem;
+  padding: 20px 0;
+}
+
+/* トップに戻るボタン基本スタイル */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  width: 44px; /* 円のサイズを固定 */
+  height: 44px; /* 円のサイズを固定 */
+  display: flex;
+  justify-content: center; /* 矢印を中央に配置 */
+  align-items: center; /* 矢印を中央に配置 */
+  border-radius: 50%;
+  font-size: 1rem;
+  z-index: 100;
+
+  /* なめらかな変化（アニメーション）の設定 */
+  transition:
+    background-color 0.3s ease,
+    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s ease;
+}
+
+/* マウスを乗せた（ホバー）時のアニメーション */
+.scroll-top-btn:hover {
+  background-color: #00ccff; /* ホバー時の背景色（お好みで変更OK） */
+  transform: translateY(-6px); /* ふわっと6px上へ浮かび上がる */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 浮いた時のうっすらした影 */
+}
+
+/* ==========================================
+   レスポンシブ設定（スマホ：768px以下）
+   ========================================== */
 @media (max-width: 768px) {
+  .profile-top,
+  .profile-bottom {
+    flex-direction: column;
+  }
+
+  .profile-image {
+    width: 100%;
+    order: -1; /* スマホでは画像を上に配置 */
+  }
+
+  /* スマホではギャラリーを1列にする */
   .gallery-item {
+    width: 100%;
+  }
+
+  /* スマホ画面で経歴ブロックを中央寄せに配置 */
+  .history-list,
+  .contact {
+    max-width: 320px; /* スマホ画面用に少し幅を狭めて中央に置く */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 年数の固定幅を調整 */
+  .history-list li span,
+  .contact span {
+    width: 100px;
+  }
+
+  /* ハンバーガーメニュー（スマホでは非表示） */
+  /* 1. 全画面メニューの基本状態（ゆっくりふわっと広がる準備） */
+  .nav-menu {
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #ffffff !important;
+    z-index: 9998 !important;
+
+    /* メニュー項目を中央寄せ */
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 30px !important;
+    font-size: 1.2rem !important;
+
+    /* アニメーション初期値：透明 ＆ 少し下に配置 ＆ わずかに縮小 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px) scale(0.95);
+
+    /* 速度を 0.8秒 に伸ばし、イージングを (0.22, 1, 0.36, 1) で超なめらかに */
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.8s;
+  }
+
+  /* 2. メニューが開いた時（ふわああ〜っと浮かび上がる） */
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1); /* 元のサイズ・位置へゆっくり戻る */
+  }
+
+  /* 区切り線（|）を非表示 */
+  .divider {
+    display: none !important;
+  }
+
+  /* 3. バツ印（ハンバーガーボタン）の設定 */
+  .hamburger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    position: fixed !important;
+    top: 25px !important;
+    right: 20px !important;
+    z-index: 9999 !important; /* メニューより上に表示 */
+  }
+
+  .hamburger span {
+    width: 100%;
+    height: 2px;
+    background-color: #333 !important;
+    /* バツ印への変化もゆっくり（0.5秒）にして統一感を出す */
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ハンバーガーボタンがバツ印に変化するアニメーション */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  /* プロフィール画像を横幅いっぱい＆中央寄せにする */
+  .profile-image {
     width: 100% !important;
+    display: flex !important;
+    justify-content: center !important; /* 中央寄せ */
+    order: -1; /* スマホでは画像を一番上に配置 */
+    margin-bottom: 25px !important; /* 画像下の余白 */
+  }
+
+  /* 画像自体のサイズ固定と丸型維持 */
+  .profile-image img {
+    width: 220px !important;
+    height: 220px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
   }
 }
