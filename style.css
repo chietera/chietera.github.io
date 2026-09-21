@@ -309,52 +309,51 @@ footer {
     flex-direction: column;
     gap: 30px;
   }
-  --- ここからdrawingページのCSS --- 
- /* -------------------------------------- */
-/* ギャラリー用のCSS（必ず一番最後に置く） */
-/* -------------------------------------- */
+}
+/* --------------------------------------
+   ギャラリー用のCSS（必ず一番最後の外側に置く）
+   -------------------------------------- */
 .gallery-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 40px 3% !important;
-    margin-bottom: 60px !important;
-  }
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 40px 3% !important;
+  margin-bottom: 60px !important;
+}
 
+.gallery-item {
+  width: 31.3% !important; /* PCでは横に3つ並べる */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.gallery-image {
+  width: 100% !important;
+  height: 220px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
+}
+
+.gallery-image img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+.gallery-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* ★ スマホ（768px以下）の時だけ1列にする設定は必ず最後にする */
+@media (max-width: 768px) {
   .gallery-item {
-    width: 31.3% !important; /* パソコンでは横に3つ並べる */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    box-sizing: border-box !important;
-  }
-
-  .gallery-image {
     width: 100% !important;
-    height: 220px !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-bottom: 12px !important;
-  }
-
-  .gallery-image img {
-    max-width: 100% !important;
-    max-height: 100% !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-  }
-
-  .gallery-caption {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #333;
-  }
-
-  /* スマホの時だけ1列にする指定は最後に書く */
-  @media (max-width: 768px) {
-    .gallery-item {
-      width: 100% !important;
-    }
   }
 }
