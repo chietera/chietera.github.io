@@ -202,21 +202,93 @@ header {
   box-sizing: border-box;
 }
 
+/* 画像枠（角カッコの基準） */
+/* 画像枠（基準設定） */
 .gallery-image {
-  width: 100%;
-  height: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
+/* 画像自体の調整 */
 .gallery-image img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+  width: 100%;
   height: auto;
-  object-fit: contain;
+  display: block;
+}
+
+/* ------------------------------------------
+   四隅のカギカッコ（ホバーエフェクト）
+   ------------------------------------------ */
+
+/* ベース設定（共通） */
+.gallery-image::before,
+.gallery-image::after {
+  content: "";
+  position: absolute;
+  width: 30px; /* カギカッコの横幅 */
+  height: 30px; /* カギカッコの縦幅 */
+  opacity: 0; /* 最初は消しておく */
+
+  /* ↓ 0.5秒かけてじわっとふわっと表示する設定 */
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 左上のカギカッコ */
+.gallery-image::before {
+  top: 15px; /* 画像の上の端からの距離 */
+  left: 15px; /* 画像の左の端からの距離 */
+
+  /* ★ 太さと色（6pxの濃いグレー/黒系） */
+  border-top: 10px solid #ff2626;
+  border-left: 10px solid #ff2626;
+
+  /* 最初は少し左上に離しておいて、ふわっと寄せる */
+  transform: translate(-10px, -10px);
+}
+
+/* 右下のカギカッコ */
+.gallery-image::after {
+  bottom: 15px; /* 画像の下の端からの距離 */
+  right: 15px; /* 画像の右の端からの距離 */
+
+  /* ★ 太さと色（6pxの濃いグレー/黒系） */
+  border-bottom: 10px solid #ff2626;
+  border-right: 10px solid #ff2626;
+
+  /* 最初は少し右下に離しておいて、ふわっと寄せる */
+  transform: translate(10px, 10px);
+}
+
+/* ------------------------------------------
+   マウスを乗せた（ホバー）時
+   ------------------------------------------ */
+.gallery-image:hover::before,
+.gallery-image:hover::after {
+  opacity: 1; /* くっきり表示 */
+  transform: translate(0, 0); /* 定位置にスッと戻る */
+}
+
+/* ------------------------------------------
+   画像自体の拡大アニメーション
+   ------------------------------------------ */
+
+/* 通常時の画像（スムーズに大きくなるように設定） */
+.gallery-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease; /* 0.5秒かけて滑らかに変化 */
+}
+
+/* マウスを乗せた（ホバー）時に画像をほんのり拡大 */
+.gallery-image:hover img {
+  transform: scale(1.05); /* 1.05倍に少し大きくなる */
 }
 
 .gallery-caption {
@@ -402,4 +474,72 @@ footer {
     border-radius: 50% !important;
     object-fit: cover !important;
   }
+}
+/* ------------------------------------------
+   画像拡大（モーダル）用のスタイル
+   ------------------------------------------ */
+
+/* 背景の黒いカバー */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* 半透明の黒 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  /* 最初は透明＆クリック不能にしておく */
+  opacity: 0;
+  visibility: hidden;
+
+  /* ↓ 背景と画像の出現スピード（0.4秒かけてふわっと表示） */
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+  cursor: pointer;
+}
+
+/* 拡大画像本体（初期状態：小さくしておく） */
+.modal-image {
+  max-width: 85%;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  /* 最初は小さく（0.8倍）しておく */
+  transform: scale(0.8);
+
+  /* ↓ 画像がふわっと大きくなるアニメーション設定 */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------
+   表示されたとき（.is-activeがついた時）
+   ------------------------------------------ */
+
+/* 背景を表示 */
+.modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 画像を等倍（1.0倍）にしてふわっと出す */
+.modal-overlay.is-active .modal-image {
+  transform: scale(1);
+}
+
+/* 閉じるボタン（右上） */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
 }
