@@ -80,10 +80,9 @@ header {
    ========================================== */
 .profile-top {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  margin-top: 40px;
+  justify-content: space-between; /* 左右に振る設定 */
+  align-items: center; /* ★ 上下中央揃えにする指定（ここを変更！） */
+  gap: 40px; /* テキストと画像の間の余白（必要に応じて） */
 }
 
 .profile-info {
@@ -221,57 +220,99 @@ header {
    四隅のカギカッコ（ホバーエフェクト）
    ------------------------------------------ */
 
-/* ベース設定（共通） */
+/* 画像枠（基準設定：隙間をなくすために overflow を再設定） */
+.gallery-image {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* 画像自体の調整 */
+.gallery-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* ホバー時に画像も少し拡大 */
+.gallery-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ------------------------------------------
+   極太カギカッコのベース設定
+   ------------------------------------------ */
+
+/* 左上(::before) & 右下(::after) */
 .gallery-image::before,
-.gallery-image::after {
+.gallery-image::after,
+/* 右上(.frame-corners::before) & 左下(.frame-corners::after) */
+.frame-corners::before,
+.frame-corners::after {
   content: "";
   position: absolute;
-  width: 30px; /* カギカッコの横幅 */
-  height: 30px; /* カギカッコの縦幅 */
-  opacity: 0; /* 最初は消しておく */
 
-  /* ↓ 0.5秒かけてじわっとふわっと表示する設定 */
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  /* ↓ カッコのサイズ */
+  width: 25px;
+  height: 25px;
 
+  opacity: 0; /* 最初は非表示 */
+
+  /* ↓ 太さと色とスケルトン */
+  border: 15px solid rgba(171, 135, 255, 0.817);
+
+  /* ↓ 動きの変形（transform）を一切行わず、
+マウスを「乗せたとき」も「離したとき」も、（フェードイン・アウト）変化させる設定 */
+  transition: opacity 0.6s ease-in-out;
   pointer-events: none;
   z-index: 2;
 }
 
-/* 左上のカギカッコ */
+/* ------------------------------------------
+   各角の border と配置（画像端っこ「0px」にがっつり固定）
+   ------------------------------------------ */
+
+/* ① 左上 (画像自体の ::before) */
 .gallery-image::before {
-  top: 15px; /* 画像の上の端からの距離 */
-  left: 15px; /* 画像の左の端からの距離 */
-
-  /* ★ 太さと色（6pxの濃いグレー/黒系） */
-  border-top: 10px solid #ff2626;
-  border-left: 10px solid #ff2626;
-
-  /* 最初は少し左上に離しておいて、ふわっと寄せる */
-  transform: translate(-10px, -10px);
+  top: 0; /* 画像の端（隙間0）に固定 */
+  left: 0; /* 画像の端（隙間0）に固定 */
+  border-right: none;
+  border-bottom: none;
 }
 
-/* 右下のカギカッコ */
+/* ② 右下 (画像自体の ::after) */
 .gallery-image::after {
-  bottom: 15px; /* 画像の下の端からの距離 */
-  right: 15px; /* 画像の右の端からの距離 */
+  bottom: 0; /* 画像の端（隙間0）に固定 */
+  right: 0; /* 画像の端（隙間0）に固定 */
+  border-top: none;
+  border-left: none;
+}
 
-  /* ★ 太さと色（6pxの濃いグレー/黒系） */
-  border-bottom: 10px solid #ff2626;
-  border-right: 10px solid #ff2626;
+/* ③ 右上 (追加したスパンの ::before) */
+.frame-corners::before {
+  top: 0; /* 画像の端（隙間0）に固定 */
+  right: 0; /* 画像の端（隙間0）に固定 */
+  border-left: none;
+  border-bottom: none;
+}
 
-  /* 最初は少し右下に離しておいて、ふわっと寄せる */
-  transform: translate(10px, 10px);
+/* ④ 左下 (追加したスパンの ::after) */
+.frame-corners::after {
+  bottom: 0; /* 画像の端（隙間0）に固定 */
+  left: 0; /* 画像の端（隙間0）に固定 */
+  border-top: none;
+  border-right: none;
 }
 
 /* ------------------------------------------
-   マウスを乗せた（ホバー）時
+   マウスを乗せた（ホバー）時に、その場から動かずにフェード表示！
    ------------------------------------------ */
 .gallery-image:hover::before,
-.gallery-image:hover::after {
-  opacity: 1; /* くっきり表示 */
-  transform: translate(0, 0); /* 定位置にスッと戻る */
+.gallery-image:hover::after,
+.gallery-image:hover .frame-corners::before,
+.gallery-image:hover .frame-corners::after {
+  opacity: 1; /* 動かさずに、不透明度を1にするだけ */
 }
 
 /* ------------------------------------------
