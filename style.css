@@ -636,3 +636,24 @@ footer {
   cursor: pointer;
   z-index: 10000;
 }
+
+/* DESIGNページ用のスタイリング調整 */
+.design-section {
+  margin-bottom: 60px;
+  /* リンクで飛んだときにヘッダーと見出しが被らないように位置をズレ調整 */
+  scroll-margin-top: 100px;
+}
+
+/* 見出しのスタイル */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-left: 12px;
+  border-left: 4px solid #000; /* 見出し横の黒アクセント線 */
+}
+
+/* ページスクロールをなめらかにする設定 */
+html {
+  scroll-behavior: smooth;
+}

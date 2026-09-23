@@ -39,12 +39,12 @@
         <a href="drawing.html">ILLUST</a>
         <span class="divider">|</span>
 
-        <!-- DESIGN（サブメニュー付き） -->
+        <!-- DESIGN（サブメニュー） -->
         <div class="nav-item-dropdown">
-          <a href="design.html">DESIGN</a>
+          <a href="design.html" class="active">DESIGN</a>
           <div class="sub-menu">
-            <a href="design.html#promo">ALL</a>
-            <a href="design.html#items">販促物</a>
+            <a href="design.html#all">ALL</a>
+            <a href="design.html#promo">販促物</a>
             <a href="design.html#graphic">グラフィックデザイン</a>
           </div>
         </div>
@@ -56,31 +56,40 @@
 
     <!-- メインコンテンツ -->
     <main class="container">
-      <!-- ALLエリア -->
-      <section id="promo">
-        <h2>ALL</h2>
-        <div class="gallery-grid">
-          <!-- ここにALLの画像を入れる -->
-        </div>
-      </section>
+      <!-- 全体（ALL）セクション -->
+      <div id="all">
+        <!-- ① 販促物エリア -->
+        <section id="promo" class="design-section">
+          <h2 class="section-title">販促物</h2>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <div class="gallery-image">
+                <img src="design/promo1.jpg" alt="販促物1" />
+                <span class="frame-corners"></span>
+              </div>
+            </div>
 
-      <hr class="line" />
+            <!-- ※ ここに必要な分だけ gallery-item を並べる -->
+          </div>
+        </section>
 
-      <!--販促物エリア -->
-      <section id="items">
-        <h2>販促物</h2>
-        <div class="gallery-grid">
-          <!-- ここに販促物の画像を入れる -->
-        </div>
-      </section>
+        <hr class="line" />
 
-      <!--グラフィックデザインエリア -->
-      <section id="graphic">
-        <h2>グラフィックデザイン</h2>
-        <div class="gallery-grid">
-          <!-- ここにグラフィックデザインの画像を入れる -->
-        </div>
-      </section>
+        <!-- ② グラフィックデザインエリア -->
+        <section id="graphic" class="design-section">
+          <h2 class="section-title">グラフィックデザイン</h2>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <div class="gallery-image">
+                <img src="design/graphic1.jpg" alt="グラフィック1" />
+                <span class="frame-corners"></span>
+              </div>
+            </div>
+
+            <!-- ※ ここに必要な分だけ gallery-item を並べる -->
+          </div>
+        </section>
+      </div>
     </main>
 
     <!-- トップへ戻るボタン -->
