@@ -254,6 +254,7 @@ header {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  display: block; /* 追記 */
 }
 
 /* 画像自体の調整 */
