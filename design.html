@@ -43,9 +43,9 @@
         <div class="nav-item-dropdown">
           <a href="design.html" class="active">DESIGN</a>
           <div class="sub-menu">
-            <a href="design.html" data-category="all">ALL</a>
-            <a href="design.html" data-category="promo">販促物</a>
-            <a href="design.html" data-category="graphic"
+            <a href="design.html?cat=all" data-category="all">ALL</a>
+            <a href="design.html?cat=promo" data-category="promo">販促物</a>
+            <a href="design.html?cat=graphic" data-category="graphic"
               >グラフィックデザイン</a
             >
           </div>
@@ -64,13 +64,16 @@
       <div id="all"></div>
 
       <!-- 販促物セクション -->
-      <div id="promo" class="gallery-section">
+      <section id="promo" class="design-section">
+        <h2 class="section-title">販促物</h2>
         <div class="gallery-grid">
           <!-- 作品1 -->
           <div class="gallery-item">
             <div class="gallery-image">
-              <img src="design/etoile_package.jpg" alt="販促物作品1" />
-              <span class="frame-corners"></span>
+              <a href="design/etoile_package.jpg" class="modal-open">
+                <img src="design/etoile_package.jpg" alt="販促物作品1" />
+                <span class="frame-corners"></span>
+              </a>
             </div>
             <p class="gallery-caption">
               販促物ポスター - 2024年<br />
@@ -80,18 +83,21 @@
 
           <!-- 作品を増やす場合はここに <div class="gallery-item"> ... </div> を追加 -->
         </div>
-      </div>
+      </section>
 
       <hr class="line" />
 
       <!-- グラフィックデザインセクション -->
-      <div id="graphic" class="gallery-section">
+      <section id="graphic" class="design-section">
+        <h2 class="section-title">グラフィックデザイン</h2>
         <div class="gallery-grid">
           <!-- 作品1 -->
           <div class="gallery-item">
             <div class="gallery-image">
-              <img src="design/etoile_poster.jpg" alt="グラフィック作品1" />
-              <span class="frame-corners"></span>
+              <a href="design/etoile_poster.jpg" class="modal-open">
+                <img src="design/etoile_poster.jpg" alt="グラフィック作品1" />
+                <span class="frame-corners"></span>
+              </a>
             </div>
             <p class="gallery-caption">
               イベントポスター - 2024年<br />
@@ -102,8 +108,13 @@
           <!-- 作品2 -->
           <div class="gallery-item">
             <div class="gallery-image">
-              <img src="design/etoile_package_2.jpg" alt="グラフィック作品2" />
-              <span class="frame-corners"></span>
+              <a href="design/etoile_package_2.jpg" class="modal-open">
+                <img
+                  src="design/etoile_package_2.jpg"
+                  alt="グラフィック作品2"
+                />
+                <span class="frame-corners"></span>
+              </a>
             </div>
             <p class="gallery-caption">
               イベントポスター - 2024年<br />
@@ -111,7 +122,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
       <hr class="line" />
 

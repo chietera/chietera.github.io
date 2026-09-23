@@ -65,3 +65,37 @@ $(function () {
     $("body").css("overflow", "");
   });
 });
+
+//-----------DESIGN画面------------------//
+// DESIGNサブメニューの表示切り替え処理
+$(function () {
+  // カテゴリ表示切り替え用関数
+  function showCategory(category) {
+    if (!category || category === "all") {
+      $(".design-section").show();
+      $(".line").show();
+    } else {
+      $(".design-section").hide();
+      $(".line").hide();
+      $("#" + category).fadeIn(300);
+    }
+  }
+
+  // サブメニュー（ALL/販促物/グラフィックデザイン）をクリックした時
+  $(".sub-menu a").on("click", function (e) {
+    const category = $(this).attr("data-category");
+    const isDesignPage = window.location.pathname.indexOf("design.html") !== -1;
+
+    if (isDesignPage) {
+      e.preventDefault(); // 遷移とスクロールを阻止
+      showCategory(category); // その場で表示切り替え
+    }
+  });
+
+  // 別ページから移動してきた時の処理（URLの ?cat=... を判定）
+  if (window.location.pathname.indexOf("design.html") !== -1) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get("cat");
+    showCategory(catParam || "all");
+  }
+});
