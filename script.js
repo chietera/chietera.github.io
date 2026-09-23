@@ -49,20 +49,24 @@ $(function () {
   // 3. ふわぁ〜っと開く画像拡大モーダル（×ボタン対応）
   // ==========================================
   // 画像クリックで拡大モーダルを開く
-  $(".gallery-grid").on("click", ".modal-open", function (e) {
+  $(document).on("click", ".modal-open", function (e) {
     e.preventDefault();
-    const imgSrc = $(this).attr("href");
 
-    $("#modal-img").attr("src", imgSrc);
-    $("#modal").css("display", "flex").hide().fadeIn(300); // ふわぁ〜っとフェードイン
-    $("body").css("overflow", "hidden"); // 背後のスクロールを固定
+    // クリックしたaタグのhref、または中のimgのsrcを取得
+    const imgSrc = $(this).attr("href") || $(this).find("img").attr("src");
+
+    if (imgSrc && imgSrc !== "#") {
+      $("#modal-img").attr("src", imgSrc);
+      $("#modal").css("display", "flex").hide().fadeIn(300);
+      $("body").css("overflow", "hidden");
+    }
   });
 
-  // ×ボタン・背景・画像クリックでふわぁ〜っと閉じる
+  // ×ボタン・背景・画像クリックで閉じる
   $(document).on("click", ".modal-close, .modal-bg, #modal-img", function () {
     $("#modal").fadeOut(300, function () {
-      $("#modal-img").attr("src", "");
-      $("body").css("overflow", ""); // スクロール固定解除
+      $("#modal-img").attr("src", "data:,");
+      $("body").css("overflow", "");
     });
   });
 });
