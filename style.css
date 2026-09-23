@@ -22,7 +22,6 @@ body {
   padding: 0 20px;
 }
 
-/* 区切り線 */
 .line {
   border: none;
   border-top: 1px solid #eeeeee;
@@ -65,7 +64,7 @@ header {
   font-weight: 700;
 }
 
-/* ドロップダウン（PC） */
+/* ドロップダウン（PC用） */
 .nav-item-dropdown {
   position: relative;
   display: inline-block;
@@ -213,7 +212,7 @@ header {
 }
 
 /* ==========================================
- * 4. ギャラリー & モーダル設定
+ * 4. ギャラリー & モーダル非表示
  * ========================================== */
 .page-description {
   text-align: center;
@@ -251,57 +250,6 @@ header {
   transform: scale(1.05);
 }
 
-/* L字ホバー枠 */
-.gallery-image::before,
-.gallery-image::after,
-.frame-corners::before,
-.frame-corners::after {
-  content: "";
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  opacity: 0;
-  border: 15px solid rgba(171, 135, 255, 0.817);
-  transition: opacity 0.6s ease-in-out;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.gallery-image::before {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.gallery-image::after {
-  bottom: 0;
-  right: 0;
-  border-top: none;
-  border-left: none;
-}
-
-.frame-corners::before {
-  top: 0;
-  right: 0;
-  border-left: none;
-  border-bottom: none;
-}
-
-.frame-corners::after {
-  bottom: 0;
-  left: 0;
-  border-top: none;
-  border-right: none;
-}
-
-.gallery-image:hover::before,
-.gallery-image:hover::after,
-.gallery-image:hover .frame-corners::before,
-.gallery-image:hover .frame-corners::after {
-  opacity: 1;
-}
-
 .gallery-caption {
   text-align: center;
   font-size: 0.85rem;
@@ -318,12 +266,12 @@ header {
   color: #777777;
 }
 
-/* 左下の壊れた「× 拡大画像」を隠す（非表示設定） */
+/* 左下の壊れた「× 拡大画像」を完全に非表示にする */
 #modal,
 .modal,
 .modal-content,
 #modal-img {
-  display: none;
+  display: none !important;
 }
 
 /* JSで active がついた時のみモーダル表示 */
@@ -410,7 +358,7 @@ footer {
     flex-direction: column;
   }
 
-  /* アイコン画像を中央に配置 */
+  /* アイコン画像を画面中央に完全に配置 */
   .profile-image {
     width: 100% !important;
     display: flex !important;
@@ -446,7 +394,7 @@ footer {
     width: 100px;
   }
 
-  /* --- ハンバーガーメニュー全画面設定 --- */
+  /* ハンバーガーメニュー全画面 */
   .nav-menu {
     display: flex !important;
     position: fixed !important;
@@ -516,7 +464,7 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
   }
 
-  /* --- DESIGNサブメニュー（スマホの中央配置） --- */
+  /* DESIGNサブメニュー（スマホ中央揃え） */
   .nav-item-dropdown {
     display: flex !important;
     flex-direction: column !important;
@@ -525,7 +473,6 @@ footer {
     position: static !important;
   }
 
-  /* PC用の浮遊位置・固定位置を完全にクリア */
   .nav-item-dropdown .sub-menu {
     position: static !important;
     top: auto !important;
@@ -540,7 +487,6 @@ footer {
     text-align: center !important;
   }
 
-  /* DESIGN ホバー（タップ）で中央に展開 */
   .nav-item-dropdown:hover .sub-menu {
     display: flex !important;
     flex-direction: column !important;

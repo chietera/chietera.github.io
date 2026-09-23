@@ -46,8 +46,7 @@ $(function () {
   // 拡大用要素をHTMLに挿入
   $("body").append(`
     <div class="modal-overlay" id="js-modal">
-      <span class="modal-close">&times;</span>
-      <img class="modal-image" src="" alt="拡大画像" />
+      <img class="modal-image" src="" alt="" />
     </div>
   `);
 
@@ -59,8 +58,8 @@ $(function () {
     $("body").css("overflow", "hidden");
   });
 
-  // 黒背景または閉じるボタンを押したら閉じる
-  $("#js-modal, .modal-close").on("click", function (e) {
+  // 黒背景を押したら閉じる
+  $("#js-modal").on("click", function (e) {
     if ($(e.target).is(".modal-image")) return;
     $("#js-modal").removeClass("is-active");
     $("body").css("overflow", "");
