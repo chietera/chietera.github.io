@@ -63,6 +63,57 @@ header {
   font-weight: 700;
 }
 
+/* ナビゲーション周りの配置調整 */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+}
+
+/* ドロップダウン用の親要素 */
+.nav-item-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* 通常時はサブメニューを隠しておく */
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 10px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  z-index: 100;
+  border-radius: 4px;
+}
+
+/* サブメニュー内のリンク */
+.sub-menu a {
+  display: block;
+  font-size: 0.85rem;
+  color: #333;
+  padding: 5px 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sub-menu a:hover {
+  font-weight: bold;
+  color: #000;
+}
+
+/* マウスを乗せた時、またはDESIGNページにいる時にサブメニューを表示 */
+.nav-item-dropdown:hover .sub-menu {
+  display: flex;
+  gap: 15px;
+}
+
 .divider {
   color: #ccc;
 }
