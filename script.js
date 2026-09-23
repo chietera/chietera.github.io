@@ -62,4 +62,23 @@ $(function () {
     $("#js-modal").removeClass("is-active"); // モーダルを非表示
     $("body").css("overflow", ""); // スクロールを再開
   });
+  // ------------------------------------------
+  // DESIGNページの「ALL / 各ジャンル」見出し切り替え処理
+  // ------------------------------------------
+  function updateDesignTitleVisibility() {
+    const hash = window.location.hash;
+    const titles = document.querySelectorAll(".section-title");
+    const lines = document.querySelectorAll(".line");
+
+    if (hash === "#all" || hash === "" || hash === "#") {
+      titles.forEach((el) => el.classList.add("is-hidden"));
+      lines.forEach((el) => el.classList.add("is-hidden"));
+    } else {
+      titles.forEach((el) => el.classList.remove("is-hidden"));
+      lines.forEach((el) => el.classList.remove("is-hidden"));
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", updateDesignTitleVisibility);
+  window.addEventListener("hashchange", updateDesignTitleVisibility);
 });

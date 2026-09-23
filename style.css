@@ -434,6 +434,44 @@ footer {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 浮いた時のうっすらした影 */
 }
 
+---------DESIGNページ----------
+
+
+/* DESIGNページ用のスタイリング調整 */
+.design-section {
+  margin-bottom: 60px;
+  /* リンクで飛んだときにヘッダーと見出しが被らないように位置をズレ調整 */
+  scroll-margin-top: 100px;
+}
+
+/* 見出しのスタイル */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-left: 12px;
+  border-left: 4px solid #000; /* 見出し横の黒アクセント線 */
+}
+
+/* ページスクロールをなめらかにする設定 */
+html {
+  scroll-behavior: smooth;
+}
+/* DESIGNページの見出し設定 */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-left: 12px;
+  border-left: 4px solid #000;
+  transition: all 0.3s ease;
+}
+
+/* JavaScriptで表示・非表示を制御するためのクラス */
+.is-hidden {
+  display: none !important;
+}
+
 /* ==========================================
    レスポンシブ設定（スマホ：768px以下）
    ========================================== */
@@ -635,25 +673,4 @@ footer {
   font-weight: bold;
   cursor: pointer;
   z-index: 10000;
-}
-
-/* DESIGNページ用のスタイリング調整 */
-.design-section {
-  margin-bottom: 60px;
-  /* リンクで飛んだときにヘッダーと見出しが被らないように位置をズレ調整 */
-  scroll-margin-top: 100px;
-}
-
-/* 見出しのスタイル */
-.section-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 25px;
-  padding-left: 12px;
-  border-left: 4px solid #000; /* 見出し横の黒アクセント線 */
-}
-
-/* ページスクロールをなめらかにする設定 */
-html {
-  scroll-behavior: smooth;
 }
