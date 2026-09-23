@@ -606,6 +606,41 @@ html {
     border-radius: 50% !important;
     object-fit: cover !important;
   }
+  /* スマホ用ハンバーガーメニューの中央揃え対応 */
+  @media (max-width: 768px) {
+    /* ドロップダウンの親枠を中央寄せ */
+    .nav-item-dropdown {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* サブメニューの絶対位置を解除して中央に配置 */
+    .nav-item-dropdown .sub-menu {
+      position: static; /* 浮かせる設定を解除 */
+      width: 100%; /* 横幅いっぱいに伸ばして中央配置を効かせる */
+      text-align: center; /* 文字を中央揃え */
+      padding: 10px 0 0 0;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    /* ホバー（タップ）時に縦並びで中央表示 */
+    .nav-item-dropdown:hover .sub-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sub-menu a {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666666;
+      padding: 4px 0;
+    }
+  }
 }
 /* ------------------------------------------
    画像拡大（モーダル）用のスタイル
