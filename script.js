@@ -81,4 +81,78 @@ $(function () {
 
   window.addEventListener("DOMContentLoaded", updateDesignTitleVisibility);
   window.addEventListener("hashchange", updateDesignTitleVisibility);
+
+  // ------------------------------------------
+  // DESIGNページ：ALLのときは見出しと線を隠す処理
+  // ------------------------------------------
+  function updateDesignTitleVisibility() {
+    // 現在のURL（#all, #promo など）を取得
+    const hash = window.location.hash;
+
+    // 対象となる見出し(h2)と線(hr)を取得
+    const titles = document.querySelectorAll(
+      ".design-section h2, .section-title",
+    );
+    const lines = document.querySelectorAll(".line");
+
+    // #all、またはハッシュなし（初期表示）のときは非表示にする
+    if (hash === "#all" || hash === "" || hash === "#") {
+      titles.forEach((el) => el.classList.add("is-hidden"));
+      lines.forEach((el) => el.classList.add("is-hidden"));
+    } else {
+      // #promo や #graphic のときは表示する
+      titles.forEach((el) => el.classList.remove("is-hidden"));
+      lines.forEach((el) => el.classList.remove("is-hidden"));
+    }
+  }
+
+  // ページ読み込み時 ＆ メニューのクリック(#変更)時に実行
+  window.addEventListener("DOMContentLoaded", updateDesignTitleVisibility);
+  window.addEventListener("hashchange", updateDesignTitleVisibility);
+
+  // ------------------------------------------
+  // DESIGNページ：カテゴリー切替（表示・非表示）処理
+  // ------------------------------------------
+  function switchDesignCategory() {
+    const hash = window.location.hash; // #all, #promo, #graphic など
+
+    const promoSection = document.getElementById("promo");
+    const graphicSection = document.getElementById("graphic");
+    const lines = document.querySelectorAll(".line");
+    const titles = document.querySelectorAll(".section-title");
+
+    if (!promoSection || !graphicSection) return; // design.html 以外では実行しない
+
+    // ① 販促物（#promo）が選ばれたとき
+    if (hash === "#promo") {
+      promoSection.classList.remove("is-hidden");
+      graphicSection.classList.add("is-hidden");
+
+      // 見出しを表示、区切り線は非表示
+      titles.forEach((el) => el.classList.remove("is-hidden"));
+      lines.forEach((el) => el.classList.add("is-hidden"));
+
+      // ② グラフィックデザイン（#graphic）が選ばれたとき
+    } else if (hash === "#graphic") {
+      promoSection.classList.add("is-hidden");
+      graphicSection.classList.remove("is-hidden");
+
+      // 見出しを表示、区切り線は非表示
+      titles.forEach((el) => el.classList.remove("is-hidden"));
+      lines.forEach((el) => el.classList.add("is-hidden"));
+
+      // ③ ALL（#all）または初期状態（指定なし）のとき
+    } else {
+      // 両方表示する
+      promoSection.classList.remove("is-hidden");
+      graphicSection.classList.remove("is-hidden");
+
+      // 見出しは隠して、区切り線を表示する
+      titles.forEach((el) => el.classList.add("is-hidden"));
+      lines.forEach((el) => el.classList.remove("is-hidden"));
+    }
+  }
+  // ページ読み込み時 ＆ メニュー（#）切り替え時に実行
+  window.addEventListener("DOMContentLoaded", switchDesignCategory);
+  window.addEventListener("hashchange", switchDesignCategory);
 });

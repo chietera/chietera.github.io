@@ -674,3 +674,60 @@ html {
   cursor: pointer;
   z-index: 10000;
 }
+
+/* ALL選択時に非表示にするための設定 */
+.is-hidden {
+  display: none !important;
+}
+
+/* ------------------------------------------
+ * DESIGNページ：余白とキャプションの調整
+ * ------------------------------------------ */
+
+/* コンテナ全体の上の余白（ヘッダーとの距離を統一） */
+.container {
+  padding-top: 40px; /* 必要に応じて 50px などに広げて調整してね */
+}
+
+/* DESIGN各セクションの余白調整 */
+.design-section {
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+/* 画像下のテキスト（キャプション）のスタイリング */
+.gallery-caption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  text-align: center; /* 中央揃え（左寄せにしたい場合は left にしてね） */
+  line-height: 1.4;
+}
+/* ------------------------------------------
+ * ILLUSTページと完璧に揃えるキャプション設定
+ * ------------------------------------------ */
+
+/* コンテナ上部の余白（ヘッダーとの距離感） */
+.container {
+  padding-top: 50px;
+}
+
+/* 1行目（タイトル＋年）：太さ・行間・位置を指定 */
+.gallery-caption {
+  margin-top: 14px; /* 画像と文字の間の距離 */
+  font-size: 0.9rem; /* 文字の大きさ */
+  font-weight: 400; /* 文字の太さ（通常） */
+  color: #333333; /* 文字の色（濃いグレー） */
+  text-align: center; /* 中央揃え */
+  line-height: 1.5; /* 行間 */
+}
+
+/* 2行目（ツール・制作時間）：少し小さく薄いグレーに */
+.gallery-sub {
+  display: block; /* 改行して下行に配置 */
+  margin-top: 4px; /* 1行目との間の距離 */
+  font-size: 0.8rem; /* 1行目より少し小さめ */
+  font-weight: 400; /* 太さを1行目と揃える */
+  color: #777777; /* 少し薄いグレー */
+  line-height: 1.4; /* 行間 */
+}
