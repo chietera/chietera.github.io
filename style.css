@@ -606,39 +606,54 @@ html {
     border-radius: 50% !important;
     object-fit: cover !important;
   }
-  /* スマホ用ハンバーガーメニューの中央揃え対応 */
+  /* ==========================================
+ * スマホ用ハンバーガーメニュー内の中央揃え
+ * ========================================== */
   @media (max-width: 768px) {
-    /* ドロップダウンの親枠を中央寄せ */
-    .nav-item-dropdown {
-      display: flex;
+    /* メニュー全体を中央寄せ */
+    .nav-menu {
       flex-direction: column;
       align-items: center;
       width: 100%;
     }
 
-    /* サブメニューの絶対位置を解除して中央に配置 */
-    .nav-item-dropdown .sub-menu {
-      position: static; /* 浮かせる設定を解除 */
-      width: 100%; /* 横幅いっぱいに伸ばして中央配置を効かせる */
-      text-align: center; /* 文字を中央揃え */
-      padding: 10px 0 0 0;
-      box-shadow: none;
-      background: transparent;
-    }
-
-    /* ホバー（タップ）時に縦並びで中央表示 */
-    .nav-item-dropdown:hover .sub-menu {
+    /* DESIGNの親要素 */
+    .nav-item-dropdown {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
+      position: static;
+    }
+
+    /* サブメニュー（ALL / 販促物 / グラフィックデザイン） */
+    .nav-item-dropdown .sub-menu {
+      position: static;
+      width: 100%;
+      padding: 10px 0 0 0;
+      background: transparent;
+      box-shadow: none;
+      text-align: center;
+    }
+
+    /* ホバー時・タップ時に縦並び中央揃えで表示 */
+    .nav-item-dropdown:hover .sub-menu {
+      display: flex !important; /* JSの上書きを強制防止 */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 12px;
     }
 
+    /* サブメニュー内のリンク */
     .sub-menu a {
+      display: block;
+      width: 100%;
       text-align: center;
       font-size: 0.85rem;
       color: #666666;
-      padding: 4px 0;
+      padding: 6px 0;
+      white-space: nowrap;
     }
   }
 }
